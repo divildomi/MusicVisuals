@@ -9,11 +9,11 @@ public class VisualSetup extends Visual {
         println("CWD: " + System.getProperty("user.dir"));
     }
 
-    //Set variables
+    // Set variables
     int VisInt = 1;
     boolean paused = true;
 
-    //Keyboard music controls
+    // Keyboard music controls
     public void keyPressed() {
         if (key >= '0' && key <= '5') {
             VisInt = key - '0';
@@ -35,7 +35,7 @@ public class VisualSetup extends Visual {
                 break;
             }
 
-            //Play audio file
+            // Play audio file
             case '1': {
                 getAudioPlayer().play();
                 break;
@@ -44,63 +44,61 @@ public class VisualSetup extends Visual {
         }
     }
 
-    //Project setup
-    public void setup()
-    {   
+    // Project setup
+    public void setup() {
         colorMode(HSB);
         noCursor();
-        
+
         setFrameSize(1024);
         frameRate(60);
 
-        //Start minim and load audio file
+        // Start minim and load audio file
         startMinim();
         loadAudio("Charmander.mp3");
+        ap.loop();
     }
 
-    //Declaration of each indivduial visualisation
+    // Declaration of each indivduial visualisation
     Sean SeanVis = new Sean(3440);
     Domi DomiVis = new Domi();
     Keith KeithVis = new Keith();
     Juliet JulietVis = new Juliet();
 
-    public void draw()
-    {
-        switch (VisInt) 
-    {
+    public void draw() {
+        switch (VisInt) {
 
-        case 1:
-        {
-            SeanVis.render(this);
-            break;
+            case 1: {
+                background(200);
+                SeanVis.render(this);
+                break;
+            }
+
+            case 2: {
+                background(0);
+                DomiVis.render(this);
+                break;
+            }
+
+            /*
+             * case 3:
+             * {
+             * background(0);
+             * KeithVis.render(this);
+             * break;
+             * }
+             */
+
+            /*
+             * case 4:
+             * {
+             * background(0);
+             * JulietVis.render(this);
+             * break;
+             * }
+             */
+
         }
 
-        /*
-        case 2:
-        {
-            DomiVis.render(this);
-            break;
-        }*/
-
-          /*
-        case 3:
-        {
-            KeithVis.render(this);
-            break;
-        }*/
-
-          /*
-        case 4:
-        {
-            JulietVis.render(this);
-            break;
-        }*/
-
     }
-
-    }
-    
-    
 
 }
-

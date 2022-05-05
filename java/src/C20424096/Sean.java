@@ -4,15 +4,14 @@ import ie.tudublin.Visual;
 
 public class Sean {
 
-    //Global session variables
+    // Global session variables
     int width;
     float[] lerpedBuffer;
     float y;
     float smtz;
     float Amp;
 
-
-    //Assign variables
+    // Assign variables
     public Sean(int width) {
         this.width = width;
 
@@ -28,10 +27,10 @@ public class Sean {
         // Set smoothness of waves
         v.strokeWeight(17f);
 
-        //Choose colour mode
+        // Choose colour mode
         v.colorMode(Visual.HSB);
 
-        //Variables for drawing
+        // Variables for drawing
         float halfheight = v.height / 2;
         float avg = 0;
         float sum = 0;
@@ -45,28 +44,28 @@ public class Sean {
 
         }
 
-        //Audio buffer variables
+        // Audio buffer variables
         avg = sum / (float) v.getAudioBuffer().size();
         sum = 0;
 
-        //Make background grey
+        // Make background grey
         v.background(200);
 
         for (int i = 0; i < v.getAudioBuffer().size(); i++) {
 
-            //Variable to map audio frequency to colours
+            // Variable to map audio frequency to colours
             float AudioMap = Visual.map(i, 0, v.getAudioBuffer().size(), 150, 255);
 
             v.stroke(AudioMap, 200, 200);
 
             float f1 = lerpedBuffer[i] * halfheight * 2.5f;
 
-            //Draw bottom bar
+            // Draw bottom bar
             v.rect(i * 2, halfheight * 1.95f + f1, i, halfheight - f1);
 
             float f2 = lerpedBuffer[i] * halfheight * 2.5f;
 
-            //Draw top bar
+            // Draw top bar
             v.rect(i * 2, 0 + f2, i, 0 - f2);
 
         }
